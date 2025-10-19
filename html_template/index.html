@@ -1,0 +1,37 @@
+<body>
+<style>
+:root { --hud: ui-monospace, Menlo, Consolas, monospace; }
+body { margin: 0; overflow: hidden; background: #000; }
+#canvas { display:block; margin: 0 auto; background:#000; }
+#hud { position: fixed; inset: 0 0 auto 0; text-align: center; color: #fff; pointer-events: none; }
+#title { margin-top: 8px; font: 800 44px/1 var(--hud); letter-spacing: 1px; }
+#row { margin-top: 2px; font: 700 18px/1.2 var(--hud); opacity:.95; }
+#mode { display:inline-block; margin-right: 16px; }
+#score { display:inline-flex; gap: 18px; background: rgba(0,0,0,.5); border-radius: 10px; padding: 4px 12px; }
+#scoreL, #scoreR { font: 800 40px/1 var(--hud); min-width: 52px; display:inline-block; }
+#msg { margin-top: 6px; font: 600 18px/1.2 var(--hud); opacity:.95; }
+</style>
+<canvas id="canvas" width="800" height="480"></canvas>
+<div id="hud">
+<div id="title">Pong!</div>
+<div id="row"><span id="mode">1 Player</span><span id="score"><span id="scoreL">00</span>:<span id="scoreR">00</span></span></div>
+<div id="msg">UP/DOWN to select 1P/2P — SPACE to start</div>
+</div>
+
+
+<script>
+var Module = {
+canvas: document.getElementById('canvas'),
+print: function(t){ console.log(t); },
+printErr:function(t){ console.error(t); },
+onRuntimeInitialized: function(){
+try{
+var ok = Module.ccall('initWebGL','number',[],[]);
+if(ok) Module.ccall('startMainLoop','void',[],[]);
+else console.error('initWebGL failed');
+}catch(e){ console.error('Runtime init error:', e); }
+}
+};
+</script>
+{{{ SCRIPT }}}
+</body>

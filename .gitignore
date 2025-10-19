@@ -1,0 +1,35 @@
+# Build output
+build-*/
+out/
+dist/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.cmake
+Makefile
+*.ninja
+.ninja_*
+compile_commands.json
+Testing/
+
+# Objects / libs
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+*.dSYM/
+
+# Emscripten outputs
+*.wasm
+*.data
+*.worker.js
+
+# Node
+node_modules/
+
+# OS junk
+.DS_Store
+Thumbs.db
